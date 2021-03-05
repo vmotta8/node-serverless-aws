@@ -1,13 +1,17 @@
 # Serverless with Nodejs and AWS
 
 ## Technologies
-  - Nodejs
-  - Aws lambdas
-  - Aws S3
-  - Aws DynamoDB
-  - Aws EventBridge
-  - Aws SQS
-  - Aws SES
+  - REST API and CRUD endpoints (AWS Lambda, API Gateway)
+  - Data persistence (AWS DynamoDB)
+  - Message Queues for cross-service communication (AWS SQS)
+  - Scheduled event triggers (AWS EventBridge)
+  - Cloud stack management (AWS CloudFormation)
+  - Object storage on the cloud (AWS S3)
+  - Email notifications (AWS SES)
+  - Middleware
+  - Authentication and Authorization (Lambda Authorizer)
+  - Data validation and error handling
+  - ... much more
 
 ## Diagram
-<img src="images/diagram.jpeg">
+<img src="images/diagram.png">
