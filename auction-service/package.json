@@ -24,7 +24,8 @@
     "webpack": "^4.35.2"
   },
   "dependencies": {
-    "aws-sdk": "^2.639.0"
+    "aws-sdk": "^2.639.0",
+    "uuid": "^8.3.2"
   },
   "bugs": {
     "url": "https://github.com/vmotta8/node-serverless-aws/issues"
