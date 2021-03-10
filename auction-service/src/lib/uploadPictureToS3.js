@@ -11,5 +11,7 @@ export async function uploadPictureToS3(key, body) {
     ContentType: 'image/jpeg',
   }).promise()
 
-  return result
+  console.log(result)
+
+  return result.Location
 }
