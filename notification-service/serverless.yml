@@ -1,5 +1,5 @@
 service:
-  name: sls-base
+  name: mail-service
 
 plugins:
   - serverless-bundle
@@ -13,11 +13,26 @@ provider:
   stage: ${opt:stage, 'dev'}
   iamRoleStatements:
     - ${file(iam/SendEmailIAM.yml):SendEmailIAM}
+
+resources:
+  Resources:
+    MailQueue: ${file(resources/MailQueue.yml):MailQueue}
+  Outputs:
+    MailQueueArn: ${file(resources/MailQueue.yml):Outputs.MailQueueArn}
+    MailQueueUrl: ${file(resources/MailQueue.yml):Outputs.MailQueueUrl}
   
 functions:
   sendMail:
     handler: src/handlers/sendEmail.handler
+    events:
+      - sqs:
+          arn: ${self:custom.mailQueue.arn}
+          batchSize: 1
 
 custom:
+  mailQueue:
+    name: MailQueue-${self:provider.stage}
+    arn: !GetAtt MailQueue.Arn 
+    url: !Ref MailQueue
   bundle:
     linting: false
