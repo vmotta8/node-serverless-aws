@@ -1,0 +1,13 @@
+.DS_Store
+
+secret.pem
+
+# package directories
+node_modules
+jspm_packages
+
+# Serverless directories
+.serverless
+
+# Webpack directories
+.webpack
