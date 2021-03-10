@@ -17,10 +17,13 @@ provider:
   iamRoleStatements:
     - ${file(iam/AuctionsTableIAM.yml):AuctionsTableIAM}
     - ${file(iam/MailQueueIAM.yml):MailQueueIAM}
+    - ${file(iam/AuctionsBucketIAM.yml):AuctionsBucketIAM}
   
 resources:
   Resources:
     AuctionsTable: ${file(resources/AuctionsTable.yml):AuctionsTable}
+    AuctionsBucket: ${file(resources/AuctionsBucket.yml):AuctionsBucket}
+    AuctionsBucketPolicy: ${file(resources/AuctionsBucket.yml):AuctionsBucketPolicy}
 
 functions:
   createAuction:
@@ -68,5 +71,7 @@ custom:
   MailQueue:
     arn: ${cf:mail-service-${self:provider.stage}.MailQueueArn}
     url: ${cf:mail-service-${self:provider.stage}.MailQueueUrl}
+  AuctionBucket:
+    name: auctions-bucket-q57hztqo-${self:provider.stage}
   bundle: 
     linting: false
