@@ -14,4 +14,4 @@
   - ... much more
 
 ## Diagram
-<img src="images/diagram.png">
+<img src="public/images/diagram.png">
