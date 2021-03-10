@@ -1,0 +1,23 @@
+service:
+  name: sls-base
+
+plugins:
+  - serverless-bundle
+  - serverless-pseudo-parameters
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  memorySize: 256
+  region: eu-west-1
+  stage: ${opt:stage, 'dev'}
+  iamRoleStatements:
+    - ${file(iam/SendEmailIAM.yml):SendEmailIAM}
+  
+functions:
+  sendMail:
+    handler: src/handlers/sendEmail.handler
+
+custom:
+  bundle:
+    linting: false
